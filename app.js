@@ -50,6 +50,7 @@ const conn = mongoose.createConnection(mongoURI, (error, client) => {
 //EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 
 
