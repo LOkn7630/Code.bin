@@ -1,49 +1,114 @@
-<h1 class="mt-4">
-    Dashboard</h1>
-<p class="lead mb-3">Welcome
-</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
-    <a href="/upload">Upload files</a>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div>
-    <a href="/showall">Show all files</a>
-</div>
-<hr>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
 
-<% if(response!=null) { %>
-    <table>
-        <tr>
-            <th>name</th>
-            <th>id </th>
-            <th>url</th>
-            <th>delete</th>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/dashboard"><span style="color: rgb(53, 54, 54);">
+                <h4>Code-Bin</h4>
+            </span> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </tr>
-        <% response.forEach(function(item){ %>
-            <tr>
-                <td>
-                    <%=  item.name%>
-                </td>
-                <td>
-                    <%= item._id %>
-                </td>
-                <td>
-                    <a href="<%= item.url %>" class="btn btn-primary" role="button">Download</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Explore</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <ul class="navbar-nav">
+                <!-- Avatar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
+                            height="22" alt="" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">My profile</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="/users/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="mt-4">Dashboard</h1>
+    <p class="lead mb-3">Welcome
+    </p>
 
-                </td>
+    <div class="container">
+        <div class="row">
+            <div class="col repo">
+                <h5 class="repo1">Repositories</h5>
+                <form class="form-inline my-2 my-lg-0 py-2">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </form>
+                <div class="repo1"><a href="#">Repo 1</a></div>
+                <div class="repo1"><a href="#">Repo 2</a></div>
+                <div class="repo1"><a href="#">Repo 3</a></div>
+                <div class="repo1"><a href="#">Repo 4</a></div>
+                <hr>
+            </div>
+            <div class="col-9">
+                <div>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab dolorum maiores perferendis,
+                    recusandae, exercitationem praesentium sit at quas eaque quaerat illum officiis autem cupiditate
+                    blanditiis quidem laborum tenetur a officia!
+                </div>
+                <div class="col-md-8 m-auto">
+                    <h1 class="text-center display-4 my-4">File Uploads</h1>
+                    <form action="/users/upload" method="POST" enctype="multipart/form-data">
+                        <div class="custom-file mb-3">
+                            <input type="file" name="file" id="file" class="custom-file-input">
+                            <label for="file" class="custom-file-label">Choose File</label>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    </form>
+                </div>
 
-                <td>
+            </div>
 
-                    <a href="/delete/<%= item.name %>" class="btn btn-primary" role="button">delete</a>
+            <!-- <div class="col-md-6 m-auto">
+                <h1 class="text-center display-4 my-4">Mongo File Uploads</h1>
+                <form action="/users/upload" method="POST" enctype="multipart/form-data">
+                    <div class="custom-file mb-3">
+                        <input type="file" name="file" id="file" class="custom-file-input">
+                        <label for="file" class="custom-file-label">Choose File</label>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                </form>
+                <hr>
 
-                </td>
+            </div> -->
+        </div>
+    </div>
 
 
-            </tr>
-            <% }) %>
-    </table>
-    <% } %>
 
-        <a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+
+</body>
+
+</html>
