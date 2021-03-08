@@ -1,5 +1,49 @@
-<h1 class="mt-4">Dashboard</h1>
+<h1 class="mt-4">
+    Dashboard</h1>
 <p class="lead mb-3">Welcome
-
 </p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<div>
+    <a href="/upload">Upload files</a>
+</div>
+
+<div>
+    <a href="/showall">Show all files</a>
+</div>
+<hr>
+
+<% if(response!=null) { %>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>id </th>
+            <th>url</th>
+            <th>delete</th>
+
+        </tr>
+        <% response.forEach(function(item){ %>
+            <tr>
+                <td>
+                    <%=  item.name%>
+                </td>
+                <td>
+                    <%= item._id %>
+                </td>
+                <td>
+                    <a href="<%= item.url %>" class="btn btn-primary" role="button">Download</a>
+
+                </td>
+
+                <td>
+
+                    <a href="/delete/<%= item.name %>" class="btn btn-primary" role="button">delete</a>
+
+                </td>
+
+
+            </tr>
+            <% }) %>
+    </table>
+    <% } %>
+
+        <a href="/users/logout" class="btn btn-secondary">Logout</a>
